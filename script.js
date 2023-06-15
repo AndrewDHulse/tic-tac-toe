@@ -25,7 +25,7 @@ let winner; // null=no winner; 1 || -1=winner, T=tie
 const messageEl=document.querySelector('h1');
 const playAgainBtn= document.querySelector('button');
 const tileEls = [...document.querySelectorAll('#board > div')]; 
-
+const cellAudio = document.getElementById('cellAudio');
 	/*----- event listeners -----*/
 document.getElementById('board').addEventListener('click', handleClick);
 playAgainBtn.addEventListener('click', init);
@@ -52,6 +52,7 @@ function handleClick(evt) {
 		board[colIdx][rowIdx] =turn;
 		turn *= -1;
 		winner = getWinner(colIdx, rowIdx)
+		cellAudio.play();
 		render();
 	}
   }
